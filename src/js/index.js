@@ -45,7 +45,7 @@ function onClick(e){
         if (totalImages<=40) {
           Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
         }
-        console.log('total',totalImages);
+        // console.log('total',totalImages);
         gallery_items=doGalleryObject(data);
         gallery(gallery_items);
         if (data.hits.length=='40') {      
@@ -53,7 +53,7 @@ function onClick(e){
         }
       } )
       .catch(function(error) {
-        console.log(error)
+        Notiflix.Notify.failure('Error')
       });
       
     }else{
@@ -64,15 +64,15 @@ function onClick(e){
 function loadMore(e){
   e.preventDefault(); 
   page+=1;
-  console.log('page=',page);
+  // console.log('page=',page);
   let query=html.search.value;
   fetchApi(query,page).then((data)=>{
     let query=html.search.value;
     gallery_items=doGalleryObject(data);
     gallery(gallery_items);
-    console.log('skolko ',data.hits.length,'download',downloadImages);
+    // console.log('skolko ',data.hits.length,'download',downloadImages);
     if (data.hits.length<'40') {       
-        console.log('how match',data.hits.length,);
+        // console.log('how match',data.hits.length,);
         html.divmore.style.display='none';
         Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");   
     }  
